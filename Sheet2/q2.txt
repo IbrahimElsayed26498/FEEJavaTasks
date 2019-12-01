@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Sheet2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input 1st number : ");
+        double x = input.nextDouble();
+        System.out.print("Input 2st number : ");
+        double y = input.nextDouble();
+        System.out.print("Input 3st number : ");
+        double z = input.nextDouble();
+        
+        double greatest = x;
+        greatest = (y > greatest) ? y : greatest;
+        greatest = (z > greatest) ? z : greatest;
+        
+        System.out.println("The greatest : " + greatest);
+    
+    }
+    
+}

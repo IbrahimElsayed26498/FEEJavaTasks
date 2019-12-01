@@ -1,0 +1,163 @@
+//Q1
+package sheet4test;
+import java.util.Scanner;
+public class Sheet4Test {
+    
+    public static void main(String[] args) {
+        System.out.print("Input any number for Square : ");
+        double x = new Scanner(System.in).nextDouble();
+        System.out.println("The Square for " + x + " is : " + square(x));
+    }
+    private static double square(double n){
+        return n*n;
+    }
+    
+}
+==============================================
+//Q2
+package sheet4test;
+import java.util.Scanner;
+public class Sheet4Test {
+
+    public static void main(String[] args) {
+        System.out.print("Input any number : ");
+        int x = new Scanner(System.in).nextInt();
+        System.out.println("The entered number is : " +
+               ( even(x) ? "even" : "odd"));
+    }
+    private static boolean even(double n){
+        if(n%2 == 0)
+            return true;
+        return false;
+    }
+}
+==============================================
+//Q3
+package sheet4test;
+import java.util.Scanner;
+public class Sheet4Test {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input an Integer : ");
+        int x = input.nextInt();
+        System.out.println("The sum is : " + sumOfDigits(x));
+        
+    }
+    private static int sumOfDigits(int n){
+        String s = n + "";
+        int sum = 0;
+        for(int i = 0; i < s.length(); i++){
+            sum += Integer.parseInt(s.charAt(i) + "");
+        }
+        
+        return sum;
+    }
+    
+}
+===============================================
+//Q4
+package sheet4test;
+import java.util.Scanner;
+public class Sheet4Test {
+    
+    public static void main(String[] args) {
+        System.out.print("Enter the number of the operand : ");
+        int x = new Scanner(System.in).nextInt();
+        System.out.println("The sum of series is : " + operand(x));
+    }
+    private static int operand(int n){
+        int sum = 0;
+        for(int i = 1; i <= n; i ++){
+            sum += fact(i) / i;
+        }
+        return sum;
+    }
+    private static int fact(int x){
+        int fact = 1;
+        for(int i = 1; i <= x; i++){
+            fact *= i;
+        }
+        return fact;
+    }
+    
+}
+=====================================================
+//Q5
+//The class that contains main function
+package sheet4test;
+import java.util.Scanner;
+import com.digital.numberspackage.FormatNumbers;
+public class Sheet4Test {
+    public static void main(String[] args) {
+        System.out.print("Input ant decimal number : ");
+        int x = new Scanner(System.in).nextInt();
+        System.out.println("The binary value is : " 
+            + FormatNumbers.DecToBinary(x));
+    }
+}
+-----------------------------------------------
+// the class that contains class FormatNumebrs
+
+package com.digital.numberspackage;
+public class FormatNumbers {
+    public static long DecToBinary(int d){
+        long binary = 0;
+        for(int i = 0; ; i++){
+            binary += (d%2) * Math.pow(10, i);
+            if(d/2 == 0)
+                break;
+            d /= 2;
+        }
+        return binary;
+    }
+}
+====================================================
+// Q6
+package sheet4test;
+import java.util.Scanner;
+
+public class Sheet4Test {
+    public static void main(String[] args) {
+        System.out.println("1. Password must have at least 8 chars" + 
+                "\n2. Password contains only letters and digit\n"
+              + "3. Password must contains at least 2 digits");
+        
+        System.out.print("\nInput a password : ");
+        String password = new Scanner(System.in).nextLine();
+        System.out.println("Password is " + 
+                (validPassword(password) ? "" : "not ") +
+                "valid");
+    }
+    public static boolean validPassword(String password){
+        password = password.toUpperCase();
+        int NumberOfDigits = 0;
+        boolean containsLetters = false;
+        char ch;
+        
+        // check if the password at least 8 length.
+        if(password.length() < 8)
+            return false;
+        
+        for(int i = 0; i < password.length(); i++){
+            ch = password.charAt(i);
+            
+            // check if the ch is a number
+            if(ch >= '0' && ch <= '9')
+                NumberOfDigits++;
+            
+            // check if the ch is a letter
+            else if(ch >= 'A' && ch <= 'Z')
+                containsLetters = true;
+            
+            else
+                return false;
+            
+        }
+        
+        if(NumberOfDigits > 1 && containsLetters == true)
+            return true;
+        
+        return false;
+    }
+}

@@ -1,0 +1,332 @@
+//Q1
+package Task;
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Customer customer = new Customer(123, "Ali Ahmed", 15);
+        Account account = new Account(customer.getID(), customer, 1000.0);
+        Invoice invoice = new Invoice(customer.getID(), customer, 20.0);
+        
+        System.out.println(account);
+        System.out.println(invoice.getAmount());
+        System.out.println();
+        
+        account.withdraw(700);
+        System.out.println(account);
+        System.out.println();
+        
+        account.withdraw(600);
+        System.out.println(account);
+    }
+    
+}
+------------------------------------------------------------------------------------------------------
+package Task;
+public class Account {
+    int ID;
+    double balance;
+    Customer customer;
+
+    public Account(int ID, Customer customer, double balance) {
+        this.ID = ID;
+        this.balance = balance;
+        this.customer = customer;
+    }
+    
+    public Account(int ID, Customer customer) {
+        this.ID = ID;
+        this.customer = customer;
+    }
+    
+    public int getID(){
+        return this.ID;
+    }
+    
+    public Customer getCustomer(){
+        return this.customer;
+    }
+    
+    public double getBalance(){
+        return this.balance;
+    }
+    
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+    
+    public String toString(){
+        return String.format("%sBlance = %.2f", customer, getBalance());
+    }
+    
+    public String getCustomerName(){
+        return this.customer.getName();
+    }
+    
+    public Account deposit(double amount){
+        balance += amount;
+        return this;
+    }
+    
+    public Account withdraw(double amount){
+        if(balance >= amount)
+            balance -= amount;
+        else
+            System.out.println("Amount withdrawn exceeds the current balance!");
+        return this;
+    }
+}
+------------------------------------------------------------------------------------------------------
+package Task;
+public class Customer {
+    int ID;
+    String name;
+    int discount;
+    
+    public Customer(int ID, String name, int discount){
+        this.ID = ID;
+        this.name = name;
+        this.discount = discount;
+    }
+    
+    public int getID(){
+        return this.ID;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public int getDiscount(){
+        return this.discount;
+    }
+    
+    public void setDiscount(int discount){
+        this.discount = discount;
+    }
+    
+    @Override
+    public String toString(){
+        return String.format("Name : %s\nID   : %s\n", name, ID);
+    }
+}
+
+------------------------------------------------------------------------------------------------------
+package Task;
+public class Invoice {
+    int ID;
+    Customer customer;
+    double amount;
+
+    public Invoice(int ID, Customer customer, double amount) {
+        this.ID = ID;
+        this.customer = customer;
+        this.amount = amount;
+    }
+    
+    public int getID(){
+        return ID;
+    }
+    
+    public Customer getCustomer(){
+        return customer;
+    }
+    
+    public String getAmount(){
+        return String.format("Amount = %.0f.", amount);
+    }
+    
+    public void setAmount(double amount){
+        this.amount = amount;
+    }
+    
+    public String getCustomerName(){
+        return customer.getName();
+    }
+    
+    public double getAmountAfterDiscount(){
+        return amount;
+    }
+}
+
+
+=======================================================================================
+//Q2.
+package Main;
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        MyPoint myPoint1 = new MyPoint(0, 0);
+        MyPoint myPoint2 = new MyPoint(5, 5);
+        MyPoint myPoint3 = new MyPoint(0, 2);
+        
+        MyCircule myCircule = new MyCircule(myPoint1, 5);
+        System.out.println(myCircule);
+        
+        MyTriangle myTriangle = new MyTriangle(myPoint1, myPoint2, myPoint3);
+        System.out.println(myTriangle);
+        System.out.println("Perimeter = " + myTriangle.getPerimeter());
+        
+    }
+    
+}
+------------------------------------------------------------------------------------------------------
+package Main;
+public class MyPoint {
+    private int x = 0;
+    private int y = 0;
+
+    public MyPoint() {
+    }
+    
+    public MyPoint(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    public int getX() {
+        return x;
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    
+    public void setXY(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    
+    public int[] getXY(){
+        return new int [] {getX(), getY()};
+    }
+    
+    @Override
+    public String toString(){
+        return String.format("(%d, %d)", getX(), getY());
+    }
+    
+    public double distance(int x, int y){
+        return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
+    }
+    
+    public double distance(MyPoint another){
+        return distance(another.getX(), another.getY());
+    }
+    
+    public double distance(){
+        return distance(0, 0);
+    }
+}
+
+------------------------------------------------------------------------------------------------------
+package Main;
+public class MyCircule {
+    private MyPoint center = new MyPoint(0, 0);
+    private int radius = 1;
+    
+    public MyCircule(){
+        
+    }
+    public MyCircule(int x, int y, int radius){
+        center.setX(x);
+        center.setY(y);
+        this.radius = radius;
+    }
+    public MyCircule(MyPoint center, int radius){
+        this.radius = radius;
+        this.center = center;
+    }
+    public MyPoint getCenter() {
+        return center;
+    }
+
+    public void setCenter(MyPoint center) {
+        this.center = center;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+    
+    public void setCenterX(int x){
+        center.setX(x);
+    }
+    public int getCenterX(){
+        return center.getX();
+    }
+    
+    public void setCenterY(int y){
+        center.setY(y);
+    }
+    public int getCenterY(){
+        return center.getY();
+    }
+    
+    public void setCenterXY(int x, int y){
+        center.setX(x);
+        center.setY(y);
+    }
+    
+    public int[] getCenterXY(){
+        return new int[] {center.getX(), center.getY()}; 
+    }
+    
+    public String toString(){
+        return String.format("MyCircule[radius = %d, center = %s]",
+                this.getRadius(), center);
+    }
+    
+    public double distance(MyPoint another){
+        return center.distance(another.getX(), another.getY());
+    }
+}
+
+------------------------------------------------------------------------------------------------------
+/*
+In the name of Allah, the Gracious, the Merciful
+ */
+package Main;
+
+public class MyTriangle {
+    MyPoint v1;
+    MyPoint v2;
+    MyPoint v3;
+    
+    public MyTriangle(MyPoint v1, MyPoint v2, MyPoint v3){
+        this.v1 = v1;
+        this.v2 = v2;
+        this.v3 = v3;
+    }
+    
+    public MyTriangle(int x1, int y1
+            , int x2, int y2, int x3, int y3){
+        
+        v1.setXY(x1, y1);
+        v2.setXY(x2, y2);
+        v3.setXY(x3, y3);
+    }
+    
+    public String toString(){
+        return String.format("MyTriangle[v1=(%d, %d), v2=(%d, %d), v3=(%d, %d)]",
+                v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3.getX(), v3.getY());
+    }
+    
+    public double getPerimeter(){
+        return v1.distance(v2) + v1.distance(v3) + v2.distance(v3);
+    }
+}

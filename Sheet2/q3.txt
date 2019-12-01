@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Sheet2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a number : ");
+        short num = input.nextShort();
+        String day = "";
+        switch(num){
+            case 1 : day = "Monday"; break;
+            case 2 : day = "Tuseday"; break;
+            case 3 : day = "Wednesday"; break;
+            case 4 : day = "Thursday"; break;
+            case 5 : day = "Friday"; break;
+            case 6 : day = "Saturday"; break;
+            case 7 : day = "Sunday"; break;
+            default: day = "Number must be between 1 and 7";
+        }
+        System.out.println(day);
+    }
+    
+}

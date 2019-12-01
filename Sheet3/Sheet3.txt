@@ -1,0 +1,304 @@
+// Q1
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double sum = 0;
+        double avg;
+        int number = 10;
+        System.out.println("Enter 10 numbers :");
+        for(int i = 0; i < number; i++){
+            
+            sum += input.nextDouble();
+        }
+        avg = sum / (double)number;
+        
+        System.out.println("Sum = " + sum + "\nAvg = " + avg);
+            
+    }
+    
+}
+---------------------------------------------------------------------------
+// q2
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number : ");
+        int number = input.nextInt();
+        int factorial = 1;
+        for(int i = 1; i <= number; i++){
+            factorial *= i;
+        }
+        System.out.println(number + "! = " + factorial);    
+    }
+    
+}
+-----------------------------------------------------------------------------
+// q4
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input the value of x : ");
+        int x = input.nextInt();
+        System.out.printf("input the  number of terms : ");
+        int nOfTerms = input.nextInt();
+        double term = 0;
+        int fact = 1;
+        double sumOfSeries = 0;
+        
+        for(int i = 0; i < nOfTerms; i++){
+            
+            for(int j = 1; j <= i * 2; j++){
+                
+               fact *= j;
+            }
+            
+            term = (Math.pow(x, 2 * i)) / (int)fact;
+            if(i%2 != 0)
+                term *= -1;
+            sumOfSeries += term;
+            
+            term = 0;
+            fact = 1;
+        }
+        
+        System.out.println("the sum is : " + sumOfSeries);
+    }
+    
+}
+
+----------------------------------------------------------------------------
+// q3
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input number of terms: ");
+        int n = input.nextInt();
+        int outNumber = 0;
+        int sum = 0;
+        for(int i = 0; i < n; i++){
+            outNumber += Math.pow(10, i);
+            System.out.print(outNumber);
+            sum += outNumber;
+            if(i+1 == n)
+                continue;
+            System.out.print(" + ");
+        }
+        System.out.println();
+        System.out.println("The Sum is : " + sum);
+    }
+    
+}
+
+--------------------------------------------------------------------------
+// q4
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input the value of x : ");
+        int x = input.nextInt();
+        System.out.printf("input the  number of terms : ");
+        int nOfTerms = input.nextInt();
+        double term = 0;
+        int fact = 1;
+        double sumOfSeries = 0;
+        
+        for(int i = 0; i < nOfTerms; i++){
+            
+            for(int j = 1; j <= i * 2; j++){
+                
+               fact *= j;
+            }
+            
+            term = (Math.pow(x, 2 * i)) / (int)fact;
+            if(i%2 != 0)
+                term *= -1;
+            sumOfSeries += term;
+            
+            term = 0;
+            fact = 1;
+        }
+        
+        System.out.println("the sum is : " + sumOfSeries);
+    }
+    
+}
+------------------------------------------------------------------------------
+/*
+q5
+ */
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter number of rows : ");
+        int row = input.nextInt();
+        int numberOfAstricts = 0;
+        for(int i = 0; i < row; i++){
+            for(int j = row-1; j>i; j--){
+                System.out.print(" ");
+            }
+            numberOfAstricts = 2 * i + 1;
+            for(int j = 0; j < numberOfAstricts; j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+    
+}
+-------------------------------------------------------------------------------
+/*
+q6
+ */
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter number of rows : ");
+        int rows = input.nextInt();
+        boolean brick;
+        for (int j = 1; j <= rows; j++) {
+            if (j % 2 != 0) {
+                for (int i = 1; i <= j; i++) {
+                    if (i % 2 != 0) {
+                        brick = true;
+                    } else {
+                        brick = false;
+                    }
+
+                    System.out.print(brick ? "1" : "0");
+                }
+                System.out.println();
+            } else {
+                for (int i = 1; i <= j; i++) {
+                    if (i % 2 != 0) {
+                        brick = true;
+                    } else {
+                        brick = false;
+                    }
+
+                    System.out.print(brick ? "0" : "1");
+                }
+                System.out.println();
+            }
+
+        }
+    }
+
+}
+
+/////////////// another sloution/////////////////
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ibrahim
+ */
+public class Test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter number of rows : ");
+        int rows = input.nextInt();
+        
+	String row = "";
+        for (int i = 1; i <= rows; i++) {
+            if(i %2 != 0){
+                row = "1" + row;
+            }
+            else{
+                row = "0" + row;
+            }
+            System.out.println(row);
+        }
+    }
+
+}
+
